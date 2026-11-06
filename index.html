@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Browser tools from skz-stellar.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
   <title>skz-stellar | Tools</title>
   <link rel="stylesheet" href="styles.css">
   <script src="starfield.js" defer></script>
@@ -27,10 +27,13 @@
   <main>
     <div class="tiles">
       <article class="tile">
-        <h2>PII Cleaner</h2>
+        <div class="tile-title">
+          <img class="app-logo" src="assets/obfuscate.svg" width="64" height="65" alt="">
+          <h2>Obfuscate</h2>
+        </div>
         <p>Replace sensitive details in CrowdStrike Falcon and Rapid7 logs with consistent tokens. Export a legend to keep related files connected.</p>
         <p class="privacy">Sanitization runs in your browser. Your logs and legends stay on your device.</p>
-        <a class="launch" href="/pii-cleaner/">Open PII Cleaner <span aria-hidden="true">&rarr;</span></a>
+        <a class="launch" href="/pii-cleaner/">Open Obfuscate <span aria-hidden="true">&rarr;</span></a>
       </article>
     </div>
   </main>

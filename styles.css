@@ -66,7 +66,7 @@ code, pre, kbd { font-family: "IBM Plex Mono", monospace; }
 #starfield { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; }
 .cosmos::after { content: ""; position: absolute; z-index: 1; inset: 0; background: radial-gradient(ellipse at 50% 40%, transparent 25%, #03071073 100%); }
 header, main, footer { position: relative; z-index: 1; width: min(100%, 580px); margin-inline: auto; }
-header { margin-bottom: 40px; text-align: center; }
+header { margin-bottom: 40px; text-align: left; }
 .prompt { display: inline-flex; align-items: center; margin: 0; font-family: "IBM Plex Mono", monospace; font-size: clamp(14px, 2.6vw, 20px); font-weight: 600; line-height: 1.6; letter-spacing: -.035em; filter: drop-shadow(0 4px 18px #03071040); }
 .prompt-segment { display: block; padding: 5px 28px 5px 20px; white-space: nowrap; }
 .prompt-user { position: relative; z-index: 1; color: #2d2943; background: #d3c4f1; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); }
@@ -74,6 +74,9 @@ header { margin-bottom: 40px; text-align: center; }
 .tiles { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
 .tile { position: relative; width: 100%; padding: clamp(24px, 4vw, 36px); overflow: hidden; border: 1px solid #c2e9f92e; border-radius: 20px; background: linear-gradient(125deg, #bdedff0f, #111c2e29); -webkit-backdrop-filter: blur(20px) saturate(135%); backdrop-filter: blur(20px) saturate(135%); box-shadow: 0 16px 60px #02061033, inset 0 1px 0 #d4f4ff12; transition: border-color .25s, background .25s; }
 .tile:hover, .tile:focus-within { border-color: #c2e9f95c; background: linear-gradient(125deg, #bdedff17, #111c2e33); }
+.tile-title { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+.app-logo { display: block; flex: none; width: 64px; height: auto; background: transparent; }
+.tile-title h2 { margin: 0; }
 h2 { font-size: 28px; font-weight: 600; letter-spacing: -.035em; margin: 0 0 16px; }
 p { color: #c1cfdc; line-height: 1.7; margin: 0 0 16px; max-width: 48ch; }
 .privacy { font-size: 13px; color: #b1c5cd; }
