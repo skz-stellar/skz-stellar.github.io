@@ -67,8 +67,12 @@ code, pre, kbd, .eyebrow, .tile-meta { font-family: "IBM Plex Mono", monospace; 
 .cosmos::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, transparent 25%, #03071073 100%); }
 header, main, footer { position: relative; z-index: 1; max-width: 1040px; margin-inline: auto; }
 header { margin-bottom: clamp(32px, 6vh, 64px); }
-h1 { font-size: clamp(22px, 4vw, 30px); font-weight: 600; letter-spacing: -.035em; margin: 0; }
-h1 span { color: #a5c2ca; font-weight: 400; }
+.prompt { display: inline-flex; align-items: center; margin: 0; font-family: "IBM Plex Mono", monospace; font-size: clamp(14px, 2.6vw, 20px); font-weight: 600; line-height: 1.6; letter-spacing: -.035em; filter: drop-shadow(0 4px 18px #03071040); }
+.prompt-segment { display: block; padding: 5px 28px 5px 20px; white-space: nowrap; }
+.prompt-user { position: relative; z-index: 1; color: #2d2943; background: #d3c4f1; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); }
+.prompt-path { margin-left: -14px; padding-left: 29px; color: #233e38; background: #b9dfce; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%); }
+.prompt-cursor { width: .48em; height: 1.1em; margin-left: 10px; background: #f2c7ac; box-shadow: 0 0 12px #f2c7ac26; animation: cursor-blink 1.6s steps(1, end) infinite; }
+@keyframes cursor-blink { 0%, 64% { opacity: .9; } 65%, 100% { opacity: .2; } }
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 24px; }
 .tile { position: relative; max-width: 580px; padding: clamp(24px, 4vw, 36px); overflow: hidden; border: 1px solid #c2e9f92e; border-radius: 20px; background: linear-gradient(125deg, #bdedff0f, #111c2e29); -webkit-backdrop-filter: blur(20px) saturate(135%); backdrop-filter: blur(20px) saturate(135%); box-shadow: 0 16px 60px #02061033, inset 0 1px 0 #d4f4ff12; transition: border-color .25s, background .25s; }
 .tile:hover, .tile:focus-within { border-color: #c2e9f95c; background: linear-gradient(125deg, #bdedff17, #111c2e33); }
@@ -85,4 +89,4 @@ footer { margin-top: 32px; font-size: 12px; }
 footer a { color: #9eb8c5; }
 @keyframes nebula-drift { from { transform: translate3d(-3%, -2%, 0) rotate(-4deg) scale(1); } to { transform: translate3d(4%, 3%, 0) rotate(5deg) scale(1.12); } }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .tile { background: #111c2edb; } }
-@media (prefers-reduced-motion: reduce) { .cloud { animation: none; } .nebula { transform: none; will-change: auto; } .tile, .launch { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .cloud, .prompt-cursor { animation: none; } .nebula { transform: none; will-change: auto; } .tile, .launch { transition: none; } }
