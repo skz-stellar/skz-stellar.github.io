@@ -89,3 +89,5 @@ footer a { color: #9eb8c5; }
 @keyframes nebula-drift { from { transform: translate3d(-3%, -2%, 0) rotate(-4deg) scale(1); } to { transform: translate3d(4%, 3%, 0) rotate(5deg) scale(1.12); } }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .tile { background: #111c2e1f; } }
 @media (prefers-reduced-motion: reduce) { .cloud { animation: none; } .nebula { transform: none; will-change: auto; } .tile, .launch { transition: none; } }
+
+.time-logo { height: 64px; }

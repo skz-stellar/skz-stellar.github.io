@@ -8,6 +8,7 @@
   <title>skz-stellar | Tools</title>
   <link rel="stylesheet" href="styles.css">
   <script src="starfield.js" defer></script>
+  <script type="module" src="apps/time-traveler/time-traveler.js"></script>
 </head>
 <body>
   <div class="cosmos" aria-hidden="true">
@@ -35,8 +36,24 @@
         <p class="privacy">Sanitization runs in your browser. Your logs and legends stay on your device.</p>
         <a class="launch" href="/pii-cleaner/">Open Obfuscate <span aria-hidden="true">&rarr;</span></a>
       </article>
+      <article class="tile" aria-labelledby="time-traveler-title">
+        <div class="tile-title">
+          <svg class="app-logo time-logo" width="64" height="64" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+            <circle cx="32" cy="32" r="23" stroke="#b9dfce" stroke-width="2"/>
+            <path d="M32 17v16l10 6" stroke="#d3c4f1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M32 5v5M32 54v5M5 32h5M54 32h5" stroke="#b9dfce" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h2 id="time-traveler-title">Time Traveler</h2>
+        </div>
+        <p class="privacy">UTC in. Your timezone out.</p>
+        <time-traveler></time-traveler>
+      </article>
     </div>
   </main>
-  <footer><a href="https://github.com/skz-stellar/pii-cleaner" rel="noreferrer">View source on GitHub</a></footer>
+  <footer>Source:
+    <a href="https://github.com/skz-stellar/skz-stellar.github.io" rel="noreferrer">Homepage</a> ·
+    <a href="https://github.com/skz-stellar/pii-cleaner" rel="noreferrer">Obfuscate</a> ·
+    <a href="https://github.com/skz-stellar/time-traveler" rel="noreferrer">Time Traveler</a>
+  </footer>
 </body>
 </html>
