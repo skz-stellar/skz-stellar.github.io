@@ -5,7 +5,6 @@
   if (!ctx) return;
   const nebula = document.querySelector('.nebula');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const pointer = { x: 0, y: 0 };
   const offset = { x: 0, y: 0 };
   let width = 0, height = 0, stars = [], frame = 0, lastTime = 0, elapsed = 0;
 
@@ -19,7 +18,7 @@
     let seed = 713;
     const random = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
     const density = Math.min(1.6, Math.max(.5, width * height / 1000000));
-    // Distant stars drift gently; the foreground moves faster and reacts more to the pointer.
+    // Distant stars drift gently; the foreground floats faster to create depth.
     const layers = [
       { count: 115, depth: .25, radius: .55, speed: 2, brightness: .62 },
       { count: 65, depth: .65, radius: .9, speed: 6, brightness: .84 },
@@ -63,9 +62,8 @@
     const delta = lastTime ? Math.min((time - lastTime) / 1000, .05) : 0;
     lastTime = time;
     elapsed += delta;
-    const smooth = 1 - Math.exp(-delta * 4);
-    offset.x += (pointer.x * 48 - offset.x) * smooth;
-    offset.y += (pointer.y * 36 - window.scrollY * .08 - offset.y) * smooth;
+    offset.x = Math.sin(elapsed * .08) * 22;
+    offset.y = Math.sin(elapsed * .06) * 16;
     nebula.style.setProperty('--parallax-x', `${offset.x * 1.4}px`);
     nebula.style.setProperty('--parallax-y', `${offset.y * 1.4}px`);
     draw();
@@ -88,12 +86,6 @@
     }
   }
 
-  window.addEventListener('pointermove', (event) => {
-    if (reducedMotion.matches || event.pointerType === 'touch') return;
-    pointer.x = event.clientX / width * 2 - 1;
-    pointer.y = event.clientY / height * 2 - 1;
-  }, { passive: true });
-  document.addEventListener('pointerleave', () => { pointer.x = pointer.y = 0; });
   window.addEventListener('resize', resize, { passive: true });
   document.addEventListener('visibilitychange', updateMotion);
   reducedMotion.addEventListener('change', updateMotion);
