@@ -72,5 +72,27 @@ const { chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright-core');
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
     await page.screenshot({path: path.join(__dirname, 'artifacts/mobile.png'), fullPage: true});
     console.log('PASS: desktop/mobile layout');
+    if (process.env.HOMEPAGE_PATH) {
+      const homepageRoot = path.dirname(path.resolve(process.env.HOMEPAGE_PATH));
+      await page.route('http://homepage.test/**', async route => {
+        const pathname = decodeURIComponent(new URL(route.request().url()).pathname);
+        const file = path.join(homepageRoot, pathname === '/' ? 'index.html' : pathname);
+        const contentType = {'.html':'text/html', '.js':'text/javascript', '.css':'text/css', '.woff2':'font/woff2', '.svg':'image/svg+xml'}[path.extname(file)] || 'application/octet-stream';
+        try { await route.fulfill({body:fs.readFileSync(file), contentType}); }
+        catch { await route.fulfill({status:404, body:'Not found'}); }
+      });
+      await page.setViewportSize({width: 1440, height: 1100});
+      await page.goto('http://homepage.test/');
+      await page.waitForFunction(() => customElements.get('time-traveler'));
+      assert.equal(await page.locator('.tiles > .tile').count(), 3);
+      assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('.tiles')).gridTemplateColumns.split(' ').length), 2);
+      assert.equal(await page.locator('a.launch[href="/hypertextify/"]').count(), 1);
+      await page.screenshot({path: path.join(__dirname, 'artifacts/homepage-desktop.png'), fullPage: true});
+      await page.setViewportSize({width: 390, height: 844});
+      assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('.tiles')).gridTemplateColumns.split(' ').length), 1);
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      await page.screenshot({path: path.join(__dirname, 'artifacts/homepage-mobile.png'), fullPage: true});
+      console.log('PASS: homepage cards, two desktop columns, one mobile column');
+    }
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

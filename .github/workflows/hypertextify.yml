@@ -23,6 +23,7 @@ jobs:
         working-directory: hypertextify
         env:
           CHROME_PATH: /usr/bin/google-chrome
+          HOMEPAGE_PATH: ../index.html
       - uses: actions/upload-artifact@v4
         with:
           name: hypertextify-screenshots
