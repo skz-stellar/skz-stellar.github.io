@@ -23,8 +23,8 @@ This produces an HTML fragment, rather than a complete HTML document.
 All processing happens in the browser. No analytics, runtime dependencies from
 CDNs, network APIs, cookies, or browser storage. Input and output only live in
 memory and disappear on reload. Copy writes to the clipboard only when clicked.
-The content security policy blocks network connections and image loads. Pasted
-HTML is parsed inside an inert template. The preview is a sandboxed iframe with
+The content security policy blocks network connections and image loads except
+the two bundled favicon files on the published site. Pasted HTML is parsed inside an inert template. The preview is a sandboxed iframe with
 its own restrictive CSP, no scripts, no image sources, and no link destinations.
 URLs are retained in the copied HTML, but never loaded by the app. The initial
 page and bundled scripts/fonts are fetched from the static host as usual.

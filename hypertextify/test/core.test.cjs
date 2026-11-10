@@ -82,7 +82,7 @@ test('conversion requires action; preview strips URLs; copy and clear work', asy
 test('static privacy policy: bundled assets, no network or storage APIs', () => {
   const html = read('index.html');
   assert.match(html, /connect-src 'none'/);
-  assert.match(html, /img-src 'none'/);
+  assert.match(html, /img-src https:\/\/skz-stellar\.github\.io\/hypertextify\/favicon\.svg https:\/\/skz-stellar\.github\.io\/hypertextify\/favicon\.ico;/);
   assert.doesNotMatch(html, /(?:src|href)="https?:/);
   for (const file of ['core.js','app.js','starfield.js']) assert.doesNotMatch(read(file), /\b(?:fetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|localStorage|sessionStorage|indexedDB|document\.cookie)\b/);
   assert.match(read('core.js'), /createElement\('template'\)/);
