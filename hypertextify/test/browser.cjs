@@ -91,6 +91,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_PATH || 'playwright-core');
       await page.setViewportSize({width: 390, height: 844});
       assert.equal(await page.evaluate(() => getComputedStyle(document.querySelector('.tiles')).gridTemplateColumns.split(' ').length), 1);
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      const appCard = page.locator('.tile').last();
+      await appCard.scrollIntoViewIfNeeded();
+      assert.ok(await appCard.isVisible());
       await page.screenshot({path: path.join(__dirname, 'artifacts/homepage-mobile.png'), fullPage: true});
       console.log('PASS: homepage cards, two desktop columns, one mobile column');
     }
