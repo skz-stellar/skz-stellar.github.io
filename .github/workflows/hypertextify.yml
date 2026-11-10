@@ -1,0 +1,29 @@
+name: Test HyperTextify
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm install --ignore-scripts
+        working-directory: hypertextify
+      - run: npm test
+        working-directory: hypertextify
+      - run: npm install --no-save --ignore-scripts playwright-core@1.58.2
+        working-directory: hypertextify
+      - run: npm run test:browser
+        working-directory: hypertextify
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hypertextify-screenshots
+          path: hypertextify/test/artifacts/*.png

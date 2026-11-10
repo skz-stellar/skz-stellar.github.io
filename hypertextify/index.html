@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Turn HTML and Markdown into clean, unstyled HTML. Everything stays in your browser.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'none'; connect-src 'none'; frame-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>HyperTextify | skz-stellar</title>
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="vendor/marked.umd.js" defer></script>
+  <script src="core.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="starfield.js" defer></script>
+</head>
+<body>
+  <div class="cosmos" aria-hidden="true"><div class="nebula"><div class="cloud cloud-violet"></div><div class="cloud cloud-teal"></div><div class="cloud cloud-rose"></div></div><canvas id="starfield"></canvas></div>
+  <header class="app-header">
+    <a class="back" href="/">← All tools</a>
+    <div class="brand"><span class="brand-icon" aria-hidden="true">&lt;/&gt;</span><h1>HyperTextify</h1><span class="badge">100% local</span></div>
+    <p>Keep the structure. Lose the styling.</p>
+  </header>
+  <main class="workspace">
+    <section class="tile editor" aria-labelledby="input-title">
+      <div class="panel-heading"><h2 id="input-title">Input</h2><label class="format-label" for="format">Format <select id="format"><option value="html">HTML</option><option value="markdown">Markdown</option></select></label></div>
+      <p class="hint" id="input-hint">Paste raw HTML. Styling and unnecessary markup will be removed.</p>
+      <label class="sr-only" for="input">HTML or Markdown source</label>
+      <textarea id="input" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder="<p style=&quot;color: purple&quot;>Hello <strong>world</strong>.</p>"></textarea>
+      <div class="actions"><button class="primary" id="convert" type="button">HyperTextify <kbd>⌘ / Ctrl + Enter</kbd></button><button id="clear" type="button">Clear</button></div>
+    </section>
+    <section class="tile editor" aria-labelledby="output-title">
+      <div class="panel-heading"><h2 id="output-title">Output</h2><button id="copy" type="button" disabled>Copy HTML</button></div>
+      <div class="view-switch" role="group" aria-label="Output view"><button id="html-view" aria-pressed="true" type="button">HTML</button><button id="preview-view" aria-pressed="false" type="button">Preview</button></div>
+      <label class="sr-only" for="output">Clean HTML output</label>
+      <textarea id="output" readonly spellcheck="false" placeholder="Your clean HTML will appear here."></textarea>
+      <iframe id="preview" title="Unstyled HTML preview" sandbox="" referrerpolicy="no-referrer" hidden></iframe>
+      <p id="status" class="hint status" role="status" aria-live="polite">Ready when you are.</p>
+    </section>
+  </main>
+  <footer class="app-footer"><p>Headings, links, images, tables, and emphasis stay. Styles, scripts, embeds, and layout wrappers go.</p><p>Nothing is uploaded or saved. Remote images and link navigation are blocked in the preview.</p></footer>
+</body>
+</html>

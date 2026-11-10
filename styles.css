@@ -65,13 +65,13 @@ code, pre, kbd { font-family: "IBM Plex Mono", monospace; }
 .cloud-rose { background: radial-gradient(ellipse at 61% 53%, #9f527b26, transparent 28%); animation-duration: 32s; animation-delay: -9s; }
 #starfield { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; }
 .cosmos::after { content: ""; position: absolute; z-index: 1; inset: 0; background: radial-gradient(ellipse at 50% 40%, transparent 25%, #03071073 100%); }
-header, main, footer { position: relative; z-index: 1; width: min(100%, 580px); margin-inline: auto; }
+header, main, footer { position: relative; z-index: 1; width: min(100%, 1180px); margin-inline: auto; }
 header { margin-bottom: 40px; text-align: left; }
 .prompt { display: inline-flex; align-items: center; margin: 0; font-family: "IBM Plex Mono", monospace; font-size: clamp(14px, 2.6vw, 20px); font-weight: 600; line-height: 1.6; letter-spacing: -.035em; filter: drop-shadow(0 4px 18px #03071040); }
 .prompt-segment { display: block; padding: 5px 28px 5px 20px; white-space: nowrap; }
 .prompt-user { position: relative; z-index: 1; color: #2d2943; background: #d3c4f1; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); }
 .prompt-path { margin-left: -14px; padding-left: 29px; color: #233e38; background: #b9dfce; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%); }
-.tiles { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+.tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 24px; }
 .tile { position: relative; width: 100%; padding: clamp(24px, 4vw, 36px); overflow: hidden; border: 1px solid #c2e9f92e; border-radius: 20px; background: linear-gradient(125deg, #bdedff05, #111c2e08); -webkit-backdrop-filter: blur(5px) saturate(155%) brightness(115%); backdrop-filter: blur(5px) saturate(155%) brightness(115%); box-shadow: 0 16px 60px #0206101a, inset 0 1px 0 #d4f4ff12; transition: border-color .25s; }
 .tile:hover, .tile:focus-within { border-color: #c2e9f95c; }
 .tile-title { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
@@ -91,3 +91,5 @@ footer a { color: #9eb8c5; }
 @media (prefers-reduced-motion: reduce) { .cloud { animation: none; } .nebula { transform: none; will-change: auto; } .tile, .launch { transition: none; } }
 
 .time-logo { height: 64px; }
+
+@media (max-width: 800px) { .tiles { grid-template-columns: minmax(0, 1fr); } }

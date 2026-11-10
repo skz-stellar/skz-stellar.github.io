@@ -1,0 +1,11 @@
+{
+  "name": "hypertextify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local HTML cleanup and Markdown-to-HTML conversion",
+  "scripts": {
+    "test": "node --test test/core.test.cjs",
+    "test:browser": "node test/browser.cjs"
+  },
+  "devDependencies": { "linkedom": "0.18.12" }
+}
