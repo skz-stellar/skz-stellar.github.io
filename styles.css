@@ -92,5 +92,8 @@ footer a { color: #9eb8c5; }
 @media (prefers-reduced-motion: reduce) { .cloud { animation: none; } .nebula { transform: none; will-change: auto; } .tile, .launch { transition: none; } }
 
 .time-logo { height: 64px; }
+.current-utc { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin-bottom: 16px; }
+.current-utc-label { color: #b1c5cd; font-size: 13px; }
+.current-utc time { color: #d1f9e8; font-family: "IBM Plex Mono", monospace; font-size: clamp(12px, 3vw, 16px); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 @media (max-width: 800px) { .tiles { grid-template-columns: minmax(0, 1fr); } }

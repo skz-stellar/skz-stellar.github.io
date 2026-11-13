@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="starfield.js" defer></script>
   <script src="tiles.js" defer></script>
+  <script type="module" src="current-utc.js"></script>
   <script type="module" src="apps/time-traveler/time-traveler.js"></script>
 </head>
 <body>
@@ -48,6 +49,7 @@
           </svg>
           <h2 id="time-traveler-title">Time Traveler</h2>
         </div>
+        <current-utc class="current-utc" role="timer" aria-label="Current UTC time"></current-utc>
         <p class="privacy">UTC in. Your timezone out.</p>
         <time-traveler></time-traveler>
       </article>
